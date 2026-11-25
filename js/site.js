@@ -141,3 +141,25 @@
   qa('[data-lightbox]').forEach(b => b.addEventListener('click', () => { lbImg.src = b.dataset.lightbox; lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); }));
   if (lb) { q('.lb-close', lb).addEventListener('click', closeLb); lb.addEventListener('click', e => { if (e.target === lb) closeLb(); }); document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); }); }
 })();
+
+/* ---------- blog ---------- */
+(() => {
+  const q = (s, c = document) => c.querySelector(s), qa = (s, c = document) => [...c.querySelectorAll(s)];
+  const posts = qa('#posts .post'), cnt = q('.blog-filters #count');
+  qa('.blog-filters .chip').forEach(c => c.addEventListener('click', () => {
+    qa('.blog-filters .chip').forEach(x => x.classList.remove('on')); c.classList.add('on');
+    let n = 0;
+    posts.forEach(p => { const show = c.dataset.filter === 'TODOS' || p.dataset.category === c.dataset.filter; p.style.display = show ? '' : 'none'; if (show) { n++; p.classList.remove('visible'); void p.offsetWidth; p.classList.add('visible'); } });
+    if (cnt) cnt.textContent = n;
+  }));
+  const bar = q('.read-bar i'), art = q('.art-body');
+  if (bar && art) {
+    const upd = () => { const r = art.getBoundingClientRect(), t = r.height - innerHeight * .6; bar.style.transform = 'scaleX(' + Math.max(0, Math.min(1, -r.top / t + .05)) + ')'; };
+    addEventListener('scroll', upd, { passive: true }); upd();
+  }
+  const cp = q('[data-copy]');
+  if (cp) cp.addEventListener('click', () => {
+    const done = () => { cp.firstChild.textContent = 'Ligação copiada '; setTimeout(() => { cp.firstChild.textContent = 'Copiar ligação'; }, 2000); };
+    (navigator.clipboard ? navigator.clipboard.writeText(location.href) : Promise.reject()).then(done, done);
+  });
+})();
