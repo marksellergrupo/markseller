@@ -131,7 +131,7 @@
   const prog = document.createElement('div'); prog.className = 'scroll-progress'; document.body.append(prog);
   const toTop = document.createElement('button'); toTop.className = 'to-top'; toTop.setAttribute('aria-label', 'Voltar ao topo'); toTop.textContent = '↑';
   toTop.onclick = () => scrollTo({ top: 0, behavior: 'smooth' }); document.body.append(toTop);
-  const nav = q('.nav'), links = qa('.nav-links a');
+  const nav = q('.nav'), links = qa('.nav-links a[href^="#"]');
   const sections = links.map(a => q(a.getAttribute('href'))).filter(Boolean);
   const track = q('.marquee-track');
   let lastY = scrollY, vel = 0, skew = 0;

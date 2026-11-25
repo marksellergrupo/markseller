@@ -1,0 +1,213 @@
+/* =====================================================================
+   MARK SELLER — Design futurista, luminoso e luxuoso
+   Camada final: redefine cores, tipografia e superfícies.
+   Títulos: Poppins · Laranjas: #ff4502 #fe5a03 #fe7803 · Brancos: #fff #f2f1ec
+   ===================================================================== */
+:root{
+  --o1:#ff4502; --o2:#fe5a03; --o3:#fe7803;
+  --white:#fff; --cream:#f2f1ec; --ink:#17110d; --muted:#6c635b;
+  --orange:#fe5a03; --orange-2:#fe7803;
+  --grad:linear-gradient(120deg,#ff4502 0%,#fe5a03 50%,#fe7803 100%);
+  --line:rgba(23,17,13,.09);
+  --glass:rgba(255,255,255,.72);
+  --radius:26px;
+  --shadow:0 30px 80px rgba(254,90,3,.16);
+  --head:"Poppins",system-ui,sans-serif;
+  --grid:linear-gradient(rgba(23,17,13,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(23,17,13,.05) 1px,transparent 1px);
+}
+body{font-family:"Inter","Poppins",system-ui,Arial,sans-serif; background:#fff; color:var(--ink); -webkit-font-smoothing:antialiased}
+.noise{opacity:.025}
+h1,h2,h3,h4,.big,.label,.btn,.nav-links,.nav-cta,.filter-btn,.meta-top,.eyebrow,.mini-grid b,.fact b,.value b,.steps b,footer b,.service small,.preloader-pct,.mini{font-family:var(--head)}
+
+/* ---------- Títulos ---------- */
+body h1{font-weight:600; font-size:clamp(42px,5.8vw,88px); line-height:1.04; letter-spacing:-.035em; color:var(--ink)}
+body .section-head h2,body .about-copy h2,body .process h2,body .tv-card h2,body .lead h2,body .contact h2,body .empty-state h2,body .page-hero h1{font-weight:600; letter-spacing:-.035em; line-height:1.05}
+body .section-head h2,body .about-copy h2,body .process h2,body .tv-card h2,body .lead h2,body .contact h2{font-size:clamp(34px,4.6vw,64px)}
+body .page-hero h1{font-size:clamp(38px,5.4vw,76px)}
+body .label,body .mini{display:inline-flex; align-items:center; gap:12px; color:var(--o2); font-weight:600; font-size:12px; letter-spacing:.2em}
+body .label:before{content:""; width:32px; height:2px; border-radius:2px; background:var(--grad)}
+body .section-head .label:after{display:none}
+body .section-head p{color:var(--muted)}
+
+/* ---------- Botões ---------- */
+body .btn{font-weight:600; font-size:12.5px; letter-spacing:.1em; padding:16px 26px; border:1px solid rgba(23,17,13,.2); color:var(--ink); background:transparent}
+body .btn:hover{border-color:var(--o2); color:var(--o2)}
+body .btn.primary{background:var(--grad); border-color:transparent; color:#fff; box-shadow:0 12px 30px rgba(254,90,3,.35)}
+body .btn.primary:hover{color:#fff; box-shadow:0 18px 44px rgba(254,90,3,.5)}
+body .btn.dark{background:var(--ink); border-color:var(--ink); color:#fff}
+body .btn.dark:hover{background:var(--o2); border-color:var(--o2); color:#fff}
+
+/* ---------- Navegação ---------- */
+body .nav{background:rgba(255,255,255,.78); backdrop-filter:blur(22px) saturate(1.4); border-bottom:1px solid var(--line)}
+body .nav.scrolled{background:rgba(255,255,255,.93); box-shadow:0 10px 40px rgba(23,17,13,.06)}
+body .nav-links{color:var(--ink); font-weight:500; font-size:12px}
+body .nav-links a:hover,body .nav-links a.active,body .nav-links a[aria-current="page"]{color:var(--o2)}
+body .nav-links a:after{background:var(--grad)}
+body .nav-cta{border:1px solid rgba(23,17,13,.2); color:var(--ink); font-weight:600}
+body .nav-cta:before{background:var(--grad)}
+body .nav-cta:hover{color:#fff; border-color:transparent}
+body .nav-toggle{border-color:rgba(23,17,13,.2); color:var(--ink)}
+@media (max-width:760px){ body .nav-links{background:rgba(255,255,255,.98); border-bottom:1px solid var(--line)} body .nav-links a{border-bottom-color:var(--line)} }
+
+/* ---------- Preloader / extras ---------- */
+.preloader{background:#fff}
+.preloader-bar{background:rgba(23,17,13,.08)} .preloader-bar i{background:var(--grad)}
+.preloader-pct{color:#a09890}
+.scroll-progress{background:var(--grad); box-shadow:0 0 14px rgba(254,90,3,.6)}
+.to-top{background:rgba(255,255,255,.85); color:var(--ink); border-color:var(--line); box-shadow:0 10px 30px rgba(23,17,13,.12)}
+.to-top:hover{background:var(--grad); color:#fff; border-color:transparent}
+
+/* ---------- Hero ---------- */
+body .hero{background:linear-gradient(180deg,#fff 0%,var(--cream) 100%)}
+body .hero:before{background:var(--grid); background-size:72px 72px; -webkit-mask-image:radial-gradient(ellipse at 70% 40%,#000,transparent 75%); mask-image:radial-gradient(ellipse at 70% 40%,#000,transparent 75%)}
+body .hero:after{background:radial-gradient(circle,rgba(254,90,3,.26),transparent 65%)}
+.hero-bg{display:none}
+.hero-person{z-index:1}
+.hero-person:before{content:""; position:absolute; right:7%; bottom:5%; width:min(36vw,500px); aspect-ratio:1; border-radius:50%; background:linear-gradient(160deg,#ff4502,#fe7803); box-shadow:0 0 0 22px rgba(254,90,3,.10),0 0 0 56px rgba(254,90,3,.06); z-index:-1}
+.hero-person img{filter:drop-shadow(0 30px 50px rgba(120,40,0,.28))}
+body .hero p{color:var(--muted)}
+body .eyebrow{color:var(--ink); font-weight:600; font-size:12px; letter-spacing:.2em}
+body .eyebrow:before{background:var(--grad)}
+body .hero-stat{background:var(--glass); border:1px solid rgba(255,255,255,.9); box-shadow:var(--shadow),inset 0 0 0 1px var(--line); border-radius:var(--radius)}
+body .hero-stat .big{font-weight:700; background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent}
+body .hero-stat p{color:var(--muted)}
+body .mini-grid{border-top-color:var(--line)} body .mini-grid div{color:var(--muted)} body .mini-grid b{color:var(--ink)}
+@media (max-width:1100px){ .hero-person{opacity:.4} .hero-person:before{width:60vw} }
+@media (max-width:760px){ .hero-person{opacity:.22} }
+
+/* ---------- Marquee ---------- */
+body .marquee{background:var(--grad); color:#fff; border:0}
+body .marquee-track{font-family:var(--head); font-weight:600; letter-spacing:.2em; font-size:13px}
+
+/* ---------- Páginas interiores ---------- */
+body .page-hero{background:linear-gradient(180deg,#fff,var(--cream)); position:relative; overflow:hidden}
+body .page-hero:before{content:""; position:absolute; inset:0; background:var(--grid); background-size:72px 72px; -webkit-mask-image:radial-gradient(ellipse at 80% 20%,#000,transparent 70%); mask-image:radial-gradient(ellipse at 80% 20%,#000,transparent 70%)}
+body .page-hero:after{content:""; position:absolute; right:-8vw; top:-14vw; width:44vw; height:44vw; border-radius:50%; background:radial-gradient(circle,rgba(254,90,3,.28),transparent 65%); pointer-events:none}
+body .page-hero>*{position:relative; z-index:1}
+body .page-hero p{color:var(--muted)}
+
+/* ---------- Secções ---------- */
+body .about{background:#fff}
+body .about-copy p{color:var(--muted)}
+.about-media{isolation:isolate}
+.about-media:before{content:""; position:absolute; inset:20px -20px -20px 20px; border:1.5px solid var(--o2); border-radius:30px; z-index:-1; opacity:.55}
+body .about-media img{border-radius:var(--radius); box-shadow:0 30px 70px rgba(23,17,13,.14)}
+body .about-media:after{background:var(--grad); color:#fff; font-family:var(--head); font-weight:600; box-shadow:0 14px 34px rgba(254,90,3,.4)}
+body .fact{border-top:1px solid var(--line)} body .fact span{color:var(--muted)}
+
+body .pillars{background:var(--cream)}
+body .micro-card{background:#fff; border:1px solid var(--line); color:var(--ink); border-radius:var(--radius); box-shadow:0 20px 50px rgba(23,17,13,.05)}
+body .micro-card p{color:var(--muted)} body .micro-card:hover{border-color:var(--o2)}
+body .values-grid{border-color:var(--line)} body .value{border-color:var(--line); background:#fff} body .value span{color:var(--muted)}
+
+/* Serviços */
+body .services{background:#fff var(--grid); background-size:72px 72px}
+body .services-grid{gap:20px}
+body .services .service{background:rgba(255,255,255,.88); color:var(--ink); border:1px solid var(--line); border-radius:var(--radius); box-shadow:0 14px 40px rgba(23,17,13,.05); backdrop-filter:blur(8px)}
+body .services .service:hover{background:var(--grad); color:#fff; border-color:transparent; box-shadow:0 30px 70px rgba(254,90,3,.35)}
+body .services .service:before{background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.28),transparent 70%)}
+body .svc-icon{background:rgba(254,90,3,.08); border-color:rgba(254,90,3,.25); color:var(--o2)}
+body .service:hover .svc-icon{background:#fff; color:var(--o2); border-color:#fff}
+body .services .service small{-webkit-text-stroke:1px rgba(23,17,13,.22)}
+body .services .service:hover small{-webkit-text-stroke-color:rgba(255,255,255,.9)}
+body .services .service h3{font-weight:600}
+body .services .service .svc-body p,body .services-6 .service p{color:var(--muted); max-width:90%}
+body .services .service:hover .svc-body p,body .services-6 .service:hover p{color:rgba(255,255,255,.92)}
+body .svc-arrow{border-color:rgba(255,255,255,.7); color:#fff}
+body .service:hover .svc-arrow{background:#fff; color:var(--o2); border-color:#fff}
+
+/* Processo */
+body .process{background:var(--grad); color:#fff; overflow:hidden}
+body .process:before{content:""; position:absolute; inset:0; background:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px); background-size:72px 72px; -webkit-mask-image:radial-gradient(ellipse at 20% 50%,#000,transparent 75%); mask-image:radial-gradient(ellipse at 20% 50%,#000,transparent 75%)}
+body .process>*{position:relative}
+body .process .label{color:#fff !important} body .process .label:before{background:#fff}
+body .process h2,body .process p{color:#fff}
+body .steps li{background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.4); backdrop-filter:blur(14px); color:#fff; border-radius:var(--radius)}
+body .steps li:before{color:#fff; font-family:var(--head); font-weight:600}
+
+/* Projectos */
+body .portfolio{background:#fff}
+body .filter-btn{background:#fff; border:1px solid var(--line); color:var(--ink); font-weight:500}
+body .filter-btn.active,body .filter-btn:hover{background:var(--grad); border-color:transparent; color:#fff}
+body .portfolio-count{color:var(--muted)}
+body .portfolio-card[data-category]{--c1:#fff; --c2:var(--cream); --ac:var(--o2); border:1px solid var(--line); box-shadow:0 20px 60px rgba(23,17,13,.07); color:var(--ink)}
+body .portfolio-card[data-category]:nth-child(even){--c1:#ff4502; --c2:#fe7803; --ac:#fff; border-color:transparent}
+body .portfolio-card:after{-webkit-text-stroke:1.5px rgba(23,17,13,.1); font-family:var(--head)}
+body .portfolio-card:nth-child(even):after{-webkit-text-stroke-color:rgba(255,255,255,.35)}
+body .portfolio-card:hover:after{-webkit-text-stroke-color:var(--ac)}
+body .portfolio-card:before{background:radial-gradient(420px circle at var(--mx,70%) var(--my,10%),rgba(254,120,3,.18),transparent 65%)}
+body .portfolio-card:nth-child(even):before{background:radial-gradient(420px circle at var(--mx,70%) var(--my,10%),rgba(255,255,255,.3),transparent 65%)}
+body .meta-top span{border-color:rgba(23,17,13,.18); background:rgba(255,255,255,.6); color:var(--ink)}
+body .meta-top span:last-child{background:var(--grad); border-color:transparent; color:#fff}
+body .portfolio-card:nth-child(even) .meta-top span{border-color:rgba(255,255,255,.5); background:rgba(255,255,255,.15); color:#fff}
+body .portfolio-card:nth-child(even) .meta-top span:last-child{background:#fff; color:var(--o1)}
+body .portfolio-meta h3{color:var(--ink); font-weight:600; letter-spacing:-.03em; font-size:clamp(24px,2.6vw,36px)}
+body .portfolio-meta strong{color:var(--o2); font-family:var(--head); font-weight:600}
+body .portfolio-meta p{color:var(--muted)}
+body .portfolio-card:nth-child(even) .portfolio-meta h3,body .portfolio-card:nth-child(even) .portfolio-meta strong{color:#fff}
+body .portfolio-card:nth-child(even) .portfolio-meta p{color:rgba(255,255,255,.9)}
+body .portfolio-meta:after{background:var(--ink); color:#fff}
+body .portfolio-card:nth-child(even) .portfolio-meta:after{background:#fff; color:var(--o1)}
+body .portfolio-card .portfolio-thumb{box-shadow:0 40px 80px rgba(120,40,0,.28),0 0 0 6px rgba(255,255,255,.7)}
+
+/* Clientes */
+body .clients{background:var(--cream)}
+body .client-card{background:#fff; border:1px solid var(--line); border-radius:var(--radius); box-shadow:0 12px 34px rgba(23,17,13,.05)}
+body .client-card:hover{border-color:var(--o3); box-shadow:0 24px 56px rgba(254,90,3,.18)}
+body .client-card:before{background:linear-gradient(145deg,transparent 45%,rgba(254,90,3,.1))}
+body .client-card span{font-family:var(--head); font-weight:600; color:var(--muted)}
+.client-pop{background:var(--ink)}
+
+/* Mark Seller TV */
+body .tv{background:#fff}
+body .tv-card{background:var(--grad); border:0; color:#fff; border-radius:34px; box-shadow:0 40px 90px rgba(254,90,3,.3); position:relative; overflow:hidden}
+body .tv-card:before{content:""; position:absolute; inset:0; background:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px); background-size:56px 56px; -webkit-mask-image:radial-gradient(ellipse at 90% 50%,#000,transparent 70%); mask-image:radial-gradient(ellipse at 90% 50%,#000,transparent 70%)}
+body .tv-card>*{position:relative}
+body .tv-card .label{color:#fff} body .tv-card .label:before{background:#fff}
+body .tv-card h2{color:#fff} body .tv-card p{color:rgba(255,255,255,.92)}
+body .tv-card .btn.primary{background:#fff; color:var(--o1); box-shadow:0 12px 30px rgba(120,40,0,.25)}
+body .tv-play{background:rgba(255,255,255,.14); border:1px solid rgba(255,255,255,.5); backdrop-filter:blur(14px); box-shadow:inset 0 0 60px rgba(255,255,255,.12)}
+body .tv-play span{background:#fff; color:var(--o1); box-shadow:0 0 0 14px rgba(255,255,255,.2),0 20px 40px rgba(120,40,0,.3)}
+
+/* Blog / Contactos */
+body .blog{background:var(--cream) var(--grid); background-size:72px 72px}
+body .empty-state p{color:var(--muted)}
+body .lead{background:var(--cream)}
+body .lead p{color:var(--muted)}
+body .lead-form{border:1px solid var(--line); border-radius:var(--radius); box-shadow:0 30px 70px rgba(23,17,13,.08)}
+body .lead-form label{font-family:var(--head); font-weight:600; color:var(--ink)}
+body .lead-form input,body .lead-form textarea{background:var(--cream); border-color:transparent}
+body .lead-form input:focus,body .lead-form textarea:focus{outline:2px solid var(--o2); background:#fff}
+body .lead .social-links .btn{border-color:rgba(23,17,13,.2)}
+.page-hero+.clients,.page-hero+.blog,.page-hero+.lead{background-color:#fff}
+.page-hero+.lead{background-image:none}
+
+/* Chamada final */
+body .contact{background:var(--grad); color:#fff; position:relative; overflow:hidden}
+body .contact:before{background:radial-gradient(circle,rgba(255,255,255,.3),transparent 65%)}
+body .contact:after{content:""; position:absolute; inset:0; background:linear-gradient(rgba(255,255,255,.1) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.1) 1px,transparent 1px); background-size:72px 72px; -webkit-mask-image:radial-gradient(ellipse at 50% 50%,#000,transparent 70%); mask-image:radial-gradient(ellipse at 50% 50%,#000,transparent 70%); pointer-events:none}
+body .contact .mini{color:#fff} body .contact .mini:before{display:none}
+body .contact h2{color:#fff} body .contact p{color:rgba(255,255,255,.92)}
+body .contact .btn{border-color:rgba(255,255,255,.7); color:#fff}
+body .contact .btn.primary{background:#fff; color:var(--o1); border-color:#fff; box-shadow:0 14px 34px rgba(120,40,0,.28)}
+body .contact .btn.dark{background:var(--ink); border-color:var(--ink)}
+body .contact .btn:hover{color:var(--o1); background:#fff}
+body .contact .contact-links{position:relative; z-index:1}
+
+/* Rodapé (único bloco escuro, discreto) */
+footer{background:var(--ink); color:#cfc5bb; border-top:0; padding:34px 5vw 40px; align-items:flex-start}
+footer b{color:#fff; letter-spacing:.14em}
+.footer-nav a{color:#cfc5bb} .footer-nav a:hover{color:var(--o3)}
+
+/* Lightbox */
+.lightbox{background:rgba(255,246,238,.9); backdrop-filter:blur(10px)}
+.close-lightbox{background:#fff; color:var(--ink); border-color:var(--line)}
+
+/* Selecção */
+::selection{background:var(--o2); color:#fff}
+
+/* Grelha dos 6 serviços: 3 colunas */
+body .services-grid.services-6{grid-template-columns:repeat(3,1fr)}
+body .services-6 .service{min-height:320px}
+@media (max-width:1100px){ body .services-grid.services-6{grid-template-columns:repeat(2,1fr)} }
+@media (max-width:760px){ body .services-grid.services-6{grid-template-columns:1fr} }

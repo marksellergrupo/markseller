@@ -21,7 +21,7 @@
       card.style.display = show ? 'flex' : 'none';
       if(show) visible++;
     });
-    countEl.textContent = visible;
+    if(countEl) countEl.textContent = visible;
   }
   qa('.filter-btn').forEach(btn=>btn.addEventListener('click', ()=>{
     qa('.filter-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active');
@@ -32,6 +32,7 @@
   // client pop feedback
   const pop=q('.client-pop'); let popTimer;
   qa('.client-card').forEach(card=>card.addEventListener('click', ()=>{
+    if(!pop) return;
     pop.textContent = card.dataset.client + ' — cliente Mark Seller';
     pop.classList.add('show'); clearTimeout(popTimer); popTimer=setTimeout(()=>pop.classList.remove('show'),1800);
   }));
@@ -41,7 +42,14 @@
   qa('[data-lightbox]').forEach(el=>el.addEventListener('click', ()=>{
     lightboxImg.src = el.dataset.lightbox; lightbox.classList.add('open'); lightbox.setAttribute('aria-hidden','false');
   }));
-  function closeLb(){ lightbox.classList.remove('open'); lightbox.setAttribute('aria-hidden','true'); lightboxImg.src=''; }
-  q('.close-lightbox').addEventListener('click', closeLb);
-  lightbox.addEventListener('click', e=>{ if(e.target===lightbox) closeLb(); });
+  function closeLb(){ if(!lightbox) return; lightbox.classList.remove('open'); lightbox.setAttribute('aria-hidden','true'); lightboxImg.src=''; }
+  if(lightbox){ q('.close-lightbox').addEventListener('click', closeLb);
+  lightbox.addEventListener('click', e=>{ if(e.target===lightbox) closeLb(); }); }
   document.addEventListener('keydown', e=>{ if(e.key==='Escape') closeLb(); });
+
+  // menu móvel
+  const navEl=q('.nav'), navBtn=q('.nav-toggle');
+  if(navEl && navBtn){
+    navBtn.addEventListener('click', ()=>{ const o=navEl.classList.toggle('open'); navBtn.setAttribute('aria-expanded', o); navBtn.textContent=o?'✕':'☰'; });
+    qa('.nav-links a').forEach(a=>a.addEventListener('click', ()=>{ navEl.classList.remove('open'); navBtn.textContent='☰'; }));
+  }
