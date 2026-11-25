@@ -1,0 +1,4 @@
+config/config.php
+uploads/blog/*
+!uploads/blog/.htaccess
+__pycache__/

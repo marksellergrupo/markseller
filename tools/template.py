@@ -5,7 +5,7 @@ os.chdir(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 def rl(text):  # texto que rola no hover
     return '<span class="roll"><span class="r" data-t="%s">%s</span></span>' % (text, text)
 
-NAV = [('sobre.html', 'Sobre nós'), ('clientes.html', 'Clientes'), ('projectos.html', 'Projectos'), ('blog.html', 'Blog'), ('contactos.html', 'Contactos')]
+NAV = [('sobre.html', 'Sobre nós'), ('clientes.html', 'Clientes'), ('projectos.html', 'Projectos'), ('blog.php', 'Blog'), ('contactos.html', 'Contactos')]
 SERV = [('Marketing e Publicidade', '<path d="M3 11v2a1 1 0 0 0 1 1h2l5 4V6L6 10H4a1 1 0 0 0-1 1z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/>',
          'Planeamos campanhas para lançar produtos, promover serviços e gerar oportunidades comerciais. Definimos o público, a mensagem e os canais de acordo com o objectivo da campanha.'),
         ('Assessoria de Imprensa', '<path d="M21 12a8 8 0 0 1-11.6 7.1L3 21l1.9-5.4A8 8 0 1 1 21 12z"/><path d="M8 11h8M8 14h5"/>',

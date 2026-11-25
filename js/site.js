@@ -163,3 +163,28 @@
     (navigator.clipboard ? navigator.clipboard.writeText(location.href) : Promise.reject()).then(done, done);
   });
 })();
+
+/* ---------- início: últimos artigos do blog (vêm da base de dados) ---------- */
+(() => {
+  const box = document.getElementById('home-posts');
+  if (!box) return;
+  const el = (tag, cls, txt) => { const n = document.createElement(tag); if (cls) n.className = cls; if (txt != null) n.textContent = txt; return n; };
+  fetch('api/posts.php?limit=3', { headers: { Accept: 'application/json' } })
+    .then(r => r.ok ? r.json() : { posts: [] })
+    .then(({ posts }) => {
+      if (!posts.length) return;
+      posts.forEach(p => {
+        const art = el('article', 'post reveal visible'); art.dataset.category = p.category;
+        const a = el('a', 'post-img'); a.href = p.url;
+        const img = new Image(); img.loading = 'lazy'; img.alt = p.title; img.src = p.cover; a.append(img);
+        const meta = el('div', 'post-meta'), chips = el('div', 'chips');
+        chips.append(el('span', 'hot', p.category), el('span', '', p.date + ' · ' + p.minutes + ' min'));
+        const h = el('h3'), ha = el('a', '', p.title); ha.href = p.url; h.append(ha);
+        const more = el('a', 'link-arrow', 'Ler artigo '); more.href = p.url; more.append(el('i', '', '↗'));
+        meta.append(chips, h, el('p', '', p.excerpt), more);
+        art.append(a, meta); box.append(art);
+      });
+      box.hidden = false;
+    })
+    .catch(() => {});
+})();

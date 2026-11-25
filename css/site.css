@@ -351,3 +351,10 @@ body:has(.form) .cta-band{display:none}
 .art-foot div{display:grid}.art-foot b{font-family:var(--head);font-weight:500}.art-foot span{color:var(--muted);font-size:14px}
 .related{background:var(--cream)}
 .post-feat .btn{width:fit-content;margin-top:30px}
+.about .btn-row{align-items:center;gap:22px 28px;margin-top:6px}
+.about .btn-row .link-arrow{margin-top:0}
+.btn{width:fit-content;flex:none}
+.art-body ol{margin:0 0 1.6em 1.4em;display:grid;gap:10px}.art-body ol li{padding-left:6px}
+.art-body h3{font-family:var(--head);font-weight:500;font-size:clamp(19px,2vw,24px);letter-spacing:-.02em;color:var(--ink);margin:1.6em 0 .5em}
+.art-body a{color:var(--o2);text-decoration:underline;text-underline-offset:3px}
+.art-fig{margin:2em 0}.art-fig img{width:100%;border-radius:var(--r)}.art-fig figcaption{text-align:center;font-size:14px;color:var(--muted);margin-top:10px}
