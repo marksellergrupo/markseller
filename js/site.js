@@ -118,6 +118,19 @@
   }
   addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll); onScroll();
 
+  /* ---------- hero: vídeo ---------- */
+  const heroVideo = q('.hero-card video'), soundBtn = q('.hero-sound');
+  if (heroVideo) {
+    if (reduce) { heroVideo.removeAttribute('autoplay'); heroVideo.pause(); heroVideo.controls = true; soundBtn.hidden = true; }
+    else new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) heroVideo.play().catch(() => {}); else heroVideo.pause(); })).observe(hero);
+    soundBtn.addEventListener('click', () => {
+      heroVideo.muted = !heroVideo.muted;
+      if (!heroVideo.muted) { heroVideo.currentTime = 0; heroVideo.play().catch(() => {}); }
+      soundBtn.textContent = heroVideo.muted ? 'Ligar som' : 'Desligar som';
+      soundBtn.setAttribute('aria-pressed', !heroVideo.muted);
+    });
+  }
+
   /* ---------- botões magnéticos ---------- */
   if (fine && !reduce) qa('.btn, .pill-cta').forEach(b => {
     b.addEventListener('mousemove', e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${(e.clientX - r.left - r.width / 2) * .18}px,${(e.clientY - r.top - r.height / 2) * .28}px)`; });
@@ -137,8 +150,13 @@
     if (count) count.textContent = n;
   }));
   const lb = q('.lightbox'), lbImg = lb && q('img', lb);
-  function closeLb() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); lbImg.removeAttribute('src'); }
-  qa('[data-lightbox]').forEach(b => b.addEventListener('click', () => { lbImg.src = b.dataset.lightbox; lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); }));
+  function openLb() { lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); }
+  function closeLb() { lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); lbImg.removeAttribute('src'); lbImg.hidden = false; const v = q('video', lb); if (v) { v.pause(); v.remove(); } }
+  qa('[data-lightbox]').forEach(b => b.addEventListener('click', () => { lbImg.src = b.dataset.lightbox; openLb(); }));
+  qa('[data-video]').forEach(b => b.addEventListener('click', () => {
+    const v = document.createElement('video'); v.src = b.dataset.video; v.controls = true; v.playsInline = true;
+    lbImg.hidden = true; lb.append(v); openLb(); v.play().catch(() => {});
+  }));
   if (lb) { q('.lb-close', lb).addEventListener('click', closeLb); lb.addEventListener('click', e => { if (e.target === lb) closeLb(); }); document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLb(); }); }
 })();
 

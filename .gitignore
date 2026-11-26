@@ -2,3 +2,4 @@ config/config.php
 uploads/blog/*
 !uploads/blog/.htaccess
 __pycache__/
+_originais/
